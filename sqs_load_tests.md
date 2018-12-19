@@ -57,9 +57,19 @@ $ aws sns subscribe --topic-arn arn:aws:sns:eu-west-1:XXXXXXXXXXXX:testtopic --p
 
 SNS Gateway
 -----------
+b3tyari's [SNS Gateway](https://github.com/b3tyar/snsgateway) is a Go
+application that enables us to send SNS messages though cURL.
 
-Real World Example
-------------------
+### Example
+Download [snsgateway.go](https://github.com/b3tyar/snsgateway/blob/master/snsgateway.go)
+```
+$ wget https://raw.githubusercontent.com/b3tyar/snsgateway/master/snsgateway.go
+```
+
+Run the application using your topic ARN:
+```
+$ go run snsgateway.go --snsarn arn:aws:sns:eu-west-1:XXXXXXXXXXXX:testtopic--region eu-west-1
+```
 
 Issues
 ------
