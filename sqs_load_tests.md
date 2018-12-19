@@ -1,33 +1,35 @@
-Load Testing Simple Queue Service (SQS)
-=======================================
-
-Simple Notification Service (SNS)
----------------------------------
-SNS is a publisher and subscriber service. Messages are sent to
-topics and delivered to specified entities which include
-mobile push, SMS, email, AWS Lambda, HTTP/S posts and SQS.
+Load Testing Simple Queue Service (SQS) with Simple Notification Service (SNS)
+==============================================================================
 
 SQS
 ----
-[DESCRIBE SQS]
+SQS is a highly scalable managed queue service for storing, retrieving,
+processing and deleting messages. It is temporary repository for messages
+awaiting processing and allows the decoupling of software systems and
+components. The default standard queue offers a "nearly unlimited" number of
+transactions per second.
 
 We'll create a dummy SQS queue through the AWS CLI.
 ```
-$
-
+$ aws sqs create-queue --queue-name testqueue
+{
+    "QueueUrl": "https://eu-west-1.queue.amazonaws.com/123XXXXXXXXX/testqueue"
+}
 ```
+
+SNS
+---
+SNS is a publisher and subscriber service. Messages are sent to topics and
+delivered to specified entities which include mobile push, SMS, email, AWS
+Lambda, HTTP/S posts and SQS. SNS is parallel and asynchronous.
+
 
 ### Create Topic
-Topics can be created through the AWS web console, the CLI or through the
-Amazon SDKs.
-
-Below is an example of creating a topic in the CLI.
 ```
 $ aws sns create-topic --name testtopic
-  {
-      "TopicArn": "arn:aws:sns:eu-west-1:123XXXXXXXXX:testtopic"
-  }
-
+{
+    "TopicArn": "arn:aws:sns:eu-west-1:123XXXXXXXXX:testtopic"
+}
 ```
 
 ### Create Subscription
@@ -48,5 +50,8 @@ to use.
 $ aws sns subscribe --topic-arn arn:aws:sns:eu-west-1:123XXXXXXXXX:testtopic --protocol sqs
 ```
 
-Notes
------
+Real World Example
+------------------
+
+Issues
+------
