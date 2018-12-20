@@ -23,7 +23,6 @@ SNS is a publisher and subscriber service. Messages are sent to topics and
 delivered to specified entities which include mobile push, SMS, email, AWS
 Lambda, HTTP/S posts and SQS. SNS is parallel and asynchronous.
 
-
 ### Create Topic
 ```
 $ aws sns create-topic --name testtopic
@@ -57,7 +56,8 @@ $ aws sns subscribe --topic-arn arn:aws:sns:eu-west-1:XXXXXXXXXXXX:testtopic --p
 
 Subscribe Queue to Topic
 ------------------------
-Subscribe the SQS Queue to the SNS Topic using this [tutorial](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-subscribe-queue-sns-topic.html).
+Subscribe the SQS queue to the SNS topic using this
+[tutorial](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-subscribe-queue-sns-topic.html).
 
 
 SNS Gateway
