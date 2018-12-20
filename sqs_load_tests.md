@@ -57,18 +57,34 @@ $ aws sns subscribe --topic-arn arn:aws:sns:eu-west-1:XXXXXXXXXXXX:testtopic --p
 
 SNS Gateway
 -----------
-b3tyari's [SNS Gateway](https://github.com/b3tyar/snsgateway) is a Go
+The [SNS Gateway](https://github.com/b3tyar/snsgateway) is a Go
 application that enables us to send SNS messages though cURL.
 
-### Example
-Download [snsgateway.go](https://github.com/b3tyar/snsgateway/blob/master/snsgateway.go)
+### Download
 ```
 $ wget https://raw.githubusercontent.com/b3tyar/snsgateway/master/snsgateway.go
 ```
 
-Run the application using your topic ARN:
+### Run
+Pass the topic arn and region.
 ```
-$ go run snsgateway.go --snsarn arn:aws:sns:eu-west-1:XXXXXXXXXXXX:testtopic--region eu-west-1
+$ go run snsgateway.go --snsarn arn:aws:sns:eu-west-1:XXXXXXXXXXXX:testtopic --region eu-west-1 --maxMessagesPerMinute 1000
+```
+
+Load Test Script
+----------------
+The below script sends 100 messages with an inteval of 10 seconds, for 3 times.
+```
+#!/bin/bash
+
+for i in {1..3}
+do
+  for j in {1..100}
+  do
+    curl 127.0.0.1:8080 -d "{iteration$i: \"test$i\"}"
+  done
+  sleep 10
+done
 ```
 
 Issues
