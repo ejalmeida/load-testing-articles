@@ -55,6 +55,11 @@ $ aws sns subscribe --topic-arn arn:aws:sns:eu-west-1:XXXXXXXXXXXX:testtopic --p
 }
 ```
 
+Subscribe Queue to Topic
+------------------------
+Subscribe the SQS Queue to the SNS Topic using this [tutorial](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-subscribe-queue-sns-topic.html).
+
+
 SNS Gateway
 -----------
 The [SNS Gateway](https://github.com/b3tyar/snsgateway) is a Go
@@ -81,11 +86,32 @@ for i in {1..3}
 do
   for j in {1..100}
   do
-    curl 127.0.0.1:8080 -d "{iteration$i: \"test$i\"}"
+    curl 127.0.0.1:8080 -d "{iteration$i: \"test$j\"}"
   done
   sleep 10
 done
 ```
 
-Issues
-------
+An SQS message id will be returned if the message is published successfully.
+
+Receive Message
+---------------
+We can list the SQS queues:
+```
+$ aws sqs list-queues
+{
+  "QueueUrls": [
+      "https://eu-west-1.queue.amazonaws.com/XXXXXXXXXXXX/testqueue"
+  ]
+}
+```
+
+And receive messages with this command:
+```
+$ aws sqs receive-message --queue-url https://eu-west-1.queue.amazonaws.com/XXXXXXXXXXXX/testqueue
+{
+  "Messages": [
+     ....
+  ]
+}
+```
