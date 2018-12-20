@@ -119,8 +119,8 @@ $ aws sqs receive-message --queue-url https://eu-west-1.queue.amazonaws.com/XXXX
 Monitoring
 ----------
 SQS publishes metrics to CloudWatch every five minutes, which makes real-time
-monitoring not as accurate as desired. It was important that increases in
-injection rates were modelled as a five minute interval step function in order
+monitoring not as accurate as desired. It is important that increases in
+injection rates are modelled as a five minute interval step function in order
 to determine the maximum throughput of the consuming component.  This can
 determined by polling the number of messages in the queue which are not cleared
 by the consumer.
