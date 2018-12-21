@@ -71,7 +71,7 @@ $ wget https://raw.githubusercontent.com/b3tyar/snsgateway/master/snsgateway.go
 ```
 
 ### Run
-Pass the topic arn and region.
+Pass the topic ARN and region.
 ```
 $ go run snsgateway.go --snsarn arn:aws:sns:eu-west-1:XXXXXXXXXXXX:testtopic --region eu-west-1 --maxMessagesPerMinute 1000
 ```
@@ -86,7 +86,7 @@ for i in {1..3}
 do
   for j in {1..100}
   do
-    curl 127.0.0.1:8080 -d "{iteration$i: \"test$j\"}"
+    curl 127.0.0.1:8080 -d "{iteration$i: \"message$j\"}"
   done
   sleep 10
 done
